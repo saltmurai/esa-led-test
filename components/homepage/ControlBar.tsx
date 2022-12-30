@@ -49,9 +49,13 @@ export default function ControlBar() {
   ];
   return (
     <>
-      <div className={clsx("flex justify-around")}>
-        <div className="flex justify-center items-center bg-white">
-          <Image src={"/esa-logo.png"} width={90} height={45} alt="ESA-LOGO" />
+      <div
+        className={clsx(
+          "flex justify-around bg-white h-16 items-center rounded-md"
+        )}
+      >
+        <div className="flex justify-center items-center">
+          <Image src={"/esa-logo.png"} width={193} height={36} alt="ESA-LOGO" />
         </div>
         <div className="flex">
           {/* Menu */}
@@ -66,19 +70,36 @@ export default function ControlBar() {
             })}
           </div>
           {/* Control */}
-          <div className="flex bg-white gap-4 px-2">
-            <div className={clsx("btn")} onClick={onOffHandler}>
+          <div className="flex gap-4 px-2">
+            <div
+              className={clsx(
+                "btn text-white w-14 bg-red-500",
+                on && "bg-green-500"
+              )}
+              onClick={onOffHandler}
+            >
               {on ? "ON" : "OFF"}
             </div>
-            <div className={clsx("btn")} onClick={modeHandler}>
+            <div
+              className={clsx(
+                "btn text-white w-14 bg-orange-400",
+                clsx(at && "bg-blue-400")
+              )}
+              onClick={modeHandler}
+            >
               {at ? "AT" : "MT"}
             </div>
-            <div className={clsx("btn")}>Retest</div>
-            <div className={clsx("btn")}>RST</div>
+            <div className={clsx("btn bg-yellow-400 w-16 text-white")}>
+              Retest
+            </div>
+            <div className={clsx("btn bg-black text-white")}>RST</div>
           </div>
           {/* Switch */}
-          <div className="px-2 bg-white">
-            <div className="btn" onClick={oneWayHandler}>
+          <div className="px-2">
+            <div
+              className="btn bg-green-500 text-white"
+              onClick={oneWayHandler}
+            >
               {oneWay ? (
                 <CgArrowsHAlt size={ICON_SIZE} />
               ) : (
@@ -89,11 +110,14 @@ export default function ControlBar() {
         </div>
         {/* Progess Bar and On Off */}
         <div className="flex bg-white justify-between items-center">
-          <progress
-            className="progress w-40 h-6 progress-primary"
-            value="70"
-            max="100"
-          ></progress>
+          <div className="flex flex-col mt-2">
+            <progress
+              className="progress w-40 h-4 progress-success"
+              value="70"
+              max="100"
+            ></progress>
+            <label>Progress: 70%</label>
+          </div>
           <div className="btn ml-2">
             <RiShutDownLine size={ICON_SIZE} />
           </div>

@@ -6,7 +6,7 @@ import StatusBar from "./StatusBar";
 export default function DisplayPanel() {
   return (
     <>
-      <div className="flex w-ful gap-3 mt-2 h-80 flex-1">
+      <div className="flex w-ful gap-3 rounded-md h-80 flex-1">
         <StatusBar></StatusBar>
         <StatusBar></StatusBar>
       </div>

@@ -1,18 +1,40 @@
 import clsx from "clsx";
 import { IoIosLock } from "react-icons/io";
 import ButtonGrid from "./ButtonGrid";
+import { useState } from "react";
 
 export default function StatusBar() {
+  const [panelStatus, sePanelStatus] = useState("Waiting");
+  const [yes, setYes] = useState(true);
+  function yesHandler() {
+    setYes(!yes);
+  }
   return (
     <>
-      <div className="flex flex-1 flex-col">
-        <div className="flex">
-          <div className="flex bg-white">
-            <div className="btn rounded-none">NO</div>
-            <div className="btn rounded-none">YES</div>
+      <div className="flex flex-1 flex-col gap-2 bg-white px-1 rounded-md py-1">
+        <div className="flex rounded-md">
+          <div className="flex rounded-md">
+            <div
+              className={clsx(
+                "btn rounded-none",
+                !yes && "bg-violet-500 text-white"
+              )}
+              onClick={yesHandler}
+            >
+              NO
+            </div>
+            <div
+              className={clsx(
+                "btn rounded-none",
+                yes && "bg-violet-500 text-white"
+              )}
+              onClick={yesHandler}
+            >
+              YES
+            </div>
           </div>
           <div className="flex flex-1 ml-3 bg-gray-100">
-            <div>
+            <div className="font-bold">
               Barcode <br></br>Auto:
             </div>
             <div className="flex justify-end flex-1 bg-white border-2 rounded-md">
@@ -21,13 +43,18 @@ export default function StatusBar() {
                   <IoIosLock size={24} className="" />
                 </div>
               </div>
-              <div className={clsx("flex items-center", "bg-red-300")}>
-                Waiting
+              <div
+                className={clsx(
+                  "flex items-center justify-center text-white w-16",
+                  panelStatus === "Waiting" && "bg-amber-500"
+                )}
+              >
+                {panelStatus}
               </div>
             </div>
           </div>
         </div>
-        <div className="bg-white h-full flex items-center justify-center">
+        <div className="bg-slate-400 rounded-md h-full flex items-center justify-center">
           <ButtonGrid></ButtonGrid>
         </div>
       </div>

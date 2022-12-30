@@ -53,8 +53,8 @@ export default function ResultLight() {
   ]);
   return (
     <>
-      <div className="flex w-full bg-white mt-2">
-        <h1 className="font-bold text-center mt-5">Result Light</h1>
+      <div className="flex w-full bg-white justify-center items-center px-1 py-2 rounded-md">
+        <h1 className="font-bold text-center">Result Light</h1>
         <div className="flex flex-1 justify-around">
           {resultLight.map(
             (

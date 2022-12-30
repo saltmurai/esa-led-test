@@ -3,7 +3,7 @@ import { FaEraser } from "react-icons/fa";
 export default function DriverInfo() {
   return (
     <>
-      <div className="flex justify-between gap-4 mt-5">
+      <div className="flex justify-between p-1 gap-4 bg-white items-center rounded-md">
         <div className="overflow-x-auto flex-1">
           <table className="table w-full">
             <thead>

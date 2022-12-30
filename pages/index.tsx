@@ -13,7 +13,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-gray-300 flex flex-col h-screen">
+      <div className="bg-gray-300 flex flex-col h-screen gap-2 px-1">
         <ControlBar></ControlBar>
         <DriverInfo></DriverInfo>
         <ResultLight></ResultLight>
