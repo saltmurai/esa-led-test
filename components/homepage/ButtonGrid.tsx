@@ -8,16 +8,22 @@ function Button({ number }: { number: number }) {
 
 function ButtonGrid() {
   return (
-    <div className="grid grid-cols-3 grid-rows-3 gap-4 w-full px-8 py-2">
-      <Button number={1} />
-      <Button number={2} />
-      <Button number={3} />
-      <Button number={4} />
-      <Button number={5} />
-      <Button number={6} />
-      <Button number={7} />
-      <Button number={8} />
-      <Button number={9} />
+    <div className="flex flex-col w-full items-center gap-2">
+      <div className="flex flex-row gap-4 w-full justify-around">
+        <Button number={1} />
+        <Button number={2} />
+        <Button number={3} />
+      </div>
+      <div className="flex flex-row gap-4 w-full justify-around">
+        <Button number={4} />
+        <Button number={5} />
+        <Button number={6} />
+      </div>
+      <div className="flex flex-row gap-4 w-full justify-around">
+        <Button number={7} />
+        <Button number={8} />
+        <Button number={9} />
+      </div>
     </div>
   );
 }

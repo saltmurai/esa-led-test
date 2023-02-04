@@ -1,12 +1,13 @@
 import clsx from "clsx";
 import Image from "next/image";
-import { AiFillSetting, AiOutlineAlignRight } from "react-icons/ai";
+import { AiFillHome, AiFillSetting, AiOutlineAlignRight } from "react-icons/ai";
 import { MdSimCardDownload } from "react-icons/md";
 import { GrHistory } from "react-icons/gr";
 import { useState } from "react";
 import { HiSwitchHorizontal } from "react-icons/hi";
 import { CgArrowsHAlt } from "react-icons/cg";
 import { RiShutDownLine } from "react-icons/ri";
+import Link from "next/link";
 const ICON_SIZE = 20;
 
 export default function ControlBar() {
@@ -30,21 +31,25 @@ export default function ControlBar() {
       name: "System Set",
       icon: <AiFillSetting size={ICON_SIZE} />,
       handler: () => {},
+      href: "system_set",
     },
     {
       name: "Param Set",
       icon: <AiOutlineAlignRight size={ICON_SIZE} />,
       handler: () => {},
+      href: "set_param",
     },
     {
       name: "Param Load",
       icon: <MdSimCardDownload size={ICON_SIZE} />,
       handler: () => {},
+      href: "param_load",
     },
     {
       name: "History",
       icon: <GrHistory size={ICON_SIZE} />,
       handler: () => {},
+      href: "history",
     },
   ];
   return (
@@ -55,17 +60,26 @@ export default function ControlBar() {
         )}
       >
         <div className="flex justify-center items-center">
-          <Image src={"/esa-logo.png"} width={193} height={36} alt="ESA-LOGO" />
+          <Link href="/">
+            <Image
+              src={"/esa-logo.png"}
+              width={193}
+              height={36}
+              alt="ESA-LOGO"
+            />
+          </Link>
         </div>
         <div className="flex">
           {/* Menu */}
-          <div className="flex bg-white gap-4 px-2">
+          <div className="flex bg-white gap-2 px-2">
             {menu.map((item, index) => {
               return (
-                <div key={index} className="btn flex flex-col">
-                  {item.icon}
-                  <div className="">{item.name}</div>
-                </div>
+                <Link href={item.href} key={index}>
+                  <div key={index} className="btn flex flex-col">
+                    {item.icon}
+                    <div className="">{item.name}</div>
+                  </div>
+                </Link>
               );
             })}
           </div>

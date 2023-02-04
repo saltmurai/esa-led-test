@@ -4,8 +4,14 @@ import ControlBar from "../components/homepage/ControlBar";
 import DriverInfo from "../components/homepage/DriverInfo";
 import ResultLight from "../components/homepage/ResultLight";
 import DisplayPanel from "../components/homepage/DisplayPanel";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
+  //fetch data from api use reactQuery
+  const { data, isLoading, error } = useQuery(["data"], () =>
+    fetch("http://localhost:3001/info").then((res) => res.json())
+  );
+
   return (
     <>
       <Head>
@@ -18,8 +24,6 @@ export default function Home() {
         <DriverInfo></DriverInfo>
         <ResultLight></ResultLight>
         <DisplayPanel></DisplayPanel>
-        <div></div>
-        <div></div>
       </div>
     </>
   );
