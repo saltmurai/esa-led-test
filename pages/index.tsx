@@ -1,15 +1,26 @@
 import Head from "next/head";
-import Layout from "../components/layout/Layout";
 import ControlBar from "../components/homepage/ControlBar";
 import DriverInfo from "../components/homepage/DriverInfo";
 import ResultLight from "../components/homepage/ResultLight";
 import DisplayPanel from "../components/homepage/DisplayPanel";
 import { useQuery } from "@tanstack/react-query";
+import useGlobalStore from "../lib/zustand";
+import { useState } from "react";
 
 export default function Home() {
-  //fetch data from api use reactQuery
-  const { data, isLoading, error } = useQuery(["data"], () =>
-    fetch("http://localhost:3001/info").then((res) => res.json())
+  const store = useGlobalStore((state: any) => state.param);
+  const updateParam = useGlobalStore((state: any) => state.updateParam);
+  const { data, isLoading, error } = useQuery(
+    ["ground"],
+    async () => {
+      const res = await fetch("/api/fetchData");
+      return res.json();
+    },
+    {
+      onSuccess: (data) => {
+        updateParam(data);
+      },
+    }
   );
 
   return (

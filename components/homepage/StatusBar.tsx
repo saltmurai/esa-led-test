@@ -3,7 +3,7 @@ import { IoIosLock } from "react-icons/io";
 import ButtonGrid from "./ButtonGrid";
 import { useState } from "react";
 
-export default function StatusBar() {
+export default function StatusBar({ chanelState }: { chanelState: any }) {
   const [panelStatus, sePanelStatus] = useState("Waiting");
   const [yes, setYes] = useState(true);
   function yesHandler() {
@@ -55,7 +55,7 @@ export default function StatusBar() {
           </div>
         </div>
         <div className="bg-slate-400 rounded-md h-full flex items-center justify-center">
-          <ButtonGrid></ButtonGrid>
+          <ButtonGrid channelState={chanelState}></ButtonGrid>
         </div>
       </div>
     </>

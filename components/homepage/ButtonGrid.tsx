@@ -1,28 +1,44 @@
-function Button({ number }: { number: number }) {
+import clsx from "clsx";
+
+function Button({
+  number,
+  status = "ENABLE",
+  state,
+}: {
+  number: number;
+  status?: "ENABLE" | "DISABLE";
+  state?: "ON" | "OFF";
+}) {
   return (
-    <div className="btn w-32 h-32 text-2xl font-bold text-white bg-red-500 rounded-full">
+    <div
+      className={clsx(
+        "btn w-32 h-32 text-2xl font-bold text-white bg-red-500 rounded-full hover:none",
+        status === "DISABLE" && "bg-gray-500 btn-disabled",
+        state === "ON" && "bg-green-500"
+      )}
+    >
       {number}
     </div>
   );
 }
 
-function ButtonGrid() {
+function ButtonGrid({ channelState }: { channelState: any }) {
   return (
     <div className="flex flex-col w-full items-center gap-2">
       <div className="flex flex-row gap-4 w-full justify-around">
-        <Button number={1} />
-        <Button number={2} />
-        <Button number={3} />
+        <Button number={1} state={channelState[0].state} />
+        <Button number={2} state={channelState[1].state} />
+        <Button number={3} state={channelState[2].state} />
       </div>
       <div className="flex flex-row gap-4 w-full justify-around">
-        <Button number={4} />
-        <Button number={5} />
-        <Button number={6} />
+        <Button number={4} state={channelState[3].state} />
+        <Button number={5} state={channelState[4].state} />
+        <Button status="DISABLE" number={6} />
       </div>
       <div className="flex flex-row gap-4 w-full justify-around">
-        <Button number={7} />
-        <Button number={8} />
-        <Button number={9} />
+        <Button status="DISABLE" number={7} />
+        <Button status="DISABLE" number={8} />
+        <Button status="DISABLE" number={9} />
       </div>
     </div>
   );

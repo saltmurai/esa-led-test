@@ -1,13 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ControlBar from "../components/homepage/ControlBar";
 import Head from "next/head";
 import Box from "@mui/material/Box";
-import {
-  DataGrid,
-  GridColDef,
-  GridValueGetterParams,
-  GridToolbar,
-} from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 import useGlobalStore from "../lib/zustand";
 
 const columns: GridColDef[] = [
@@ -55,8 +50,36 @@ const columns: GridColDef[] = [
 export default function SetParam() {
   const store = useGlobalStore((state: any) => state.param);
   const updateParam = useGlobalStore((state: any) => state.updateParam);
-  console.log(store);
   const [rows, setRows] = useState(store);
+  // fetch data then set to rows
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch("/api/fetchData");
+      const data = await result.json();
+      setRows(data);
+    };
+    fetchData();
+  }, []);
+
+  async function saveHandler() {
+    updateParam(rows);
+    try {
+      const result = await fetch("/api/saveData", {
+        method: "POST",
+        body: JSON.stringify(rows),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (result.status === 200) {
+        alert("Data saved successfully");
+      } else {
+        alert("Error saving data");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
     <>
       <Head>
@@ -66,20 +89,17 @@ export default function SetParam() {
         <ControlBar></ControlBar>
         <div className="param h-full bg-white px-5">
           <div className="flex justify-center items-center mt-5 gap-3">
-            <div
-              className="btn btn-primary text-white"
-              onClick={() => updateParam(rows)}
-            >
+            <div className="btn btn-primary text-white" onClick={saveHandler}>
               SAVE
             </div>
             <div className="btn btn-error text-white">LOAD</div>
           </div>
           <div className="flex mt-5 flex-col justify-center items-center text-lg">
-            <Box sx={{ height: 400, width: "80%", fontSize: 18 }}>
+            <Box sx={{ height: 500, width: "80%", fontSize: 18 }}>
               <DataGrid
                 rows={rows}
                 columns={columns}
-                pageSize={5}
+                pageSize={9}
                 disableColumnFilter
                 rowsPerPageOptions={[5]}
                 disableSelectionOnClick
