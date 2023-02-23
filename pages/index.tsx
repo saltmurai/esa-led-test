@@ -32,8 +32,8 @@ export default function Home() {
       </Head>
       <div className="bg-gray-300 flex flex-col h-screen gap-2 px-1">
         <ControlBar></ControlBar>
-        <DriverInfo></DriverInfo>
-        <ResultLight></ResultLight>
+        {/* <DriverInfo></DriverInfo> */}
+        {/* <ResultLight></ResultLight> */}
         <DisplayPanel></DisplayPanel>
       </div>
     </>

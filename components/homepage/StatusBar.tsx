@@ -54,7 +54,7 @@ export default function StatusBar({ chanelState }: { chanelState: any }) {
             </div>
           </div>
         </div>
-        <div className="bg-slate-400 rounded-md h-full flex items-center justify-center">
+        <div className="bg-slate-400 rounded-md h-full">
           <ButtonGrid channelState={chanelState}></ButtonGrid>
         </div>
       </div>
