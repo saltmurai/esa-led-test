@@ -43,11 +43,11 @@ export default function DisplayPanel() {
   // const store
   const store = useGlobalStore((state: any) => state.param);
   const [buttonState, setButtonState] = useState([
-    { id: 1, state: "ON" },
-    { id: 2, state: "ON" },
-    { id: 3, state: "ON" },
-    { id: 4, state: "ON" },
-    { id: 5, state: "ON" },
+    { id: 1, state: "READY" },
+    { id: 2, state: "READY" },
+    { id: 3, state: "READY" },
+    { id: 4, state: "READY" },
+    { id: 5, state: "READY" },
   ]);
   const { data, isLoading, error } = useQuery(
     ["data"],
@@ -60,11 +60,11 @@ export default function DisplayPanel() {
           const newState = [...prevState];
           if (data["chanel"] === 0) {
             return [
-              { id: 1, state: "ON" },
-              { id: 2, state: "ON" },
-              { id: 3, state: "ON" },
-              { id: 4, state: "ON" },
-              { id: 5, state: "ON" },
+              { id: 1, state: "READY" },
+              { id: 2, state: "READY" },
+              { id: 3, state: "READY" },
+              { id: 4, state: "READY" },
+              { id: 5, state: "READY" },
             ];
           }
           newState[data["chanel"] - 1].state = isOn ? "ON" : "OFF";

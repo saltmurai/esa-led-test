@@ -8,14 +8,16 @@ function Button({
 }: {
   number: number;
   status?: "ENABLE" | "DISABLE";
-  state?: "ON" | "OFF";
+  state?: "ON" | "OFF" | "READY";
 }) {
   return (
     <div
       className={clsx(
-        "btn w-48 h-48 font-bold text-white bg-red-500 rounded-full hover:none",
+        "btn w-48 h-48 font-bold text-white bg-gray-400 rounded-full hover:none",
         status === "DISABLE" && "bg-gray-500 btn-disabled",
-        state === "ON" && "bg-green-500"
+        state === "ON" && "bg-green-500",
+        state === "READY" && "bg-yellow-500",
+        state === "OFF" && "bg-red-500"
       )}
       style={{ fontSize: "2rem" }}
     >
