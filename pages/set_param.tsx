@@ -62,7 +62,6 @@ export default function SetParam() {
   }, []);
 
   async function saveHandler() {
-    updateParam(rows);
     try {
       const result = await fetch("/api/saveData", {
         method: "POST",
@@ -72,6 +71,7 @@ export default function SetParam() {
         },
       });
       if (result.status === 200) {
+        updateParam(rows);
         alert("Data saved successfully");
       } else {
         alert("Error saving data");

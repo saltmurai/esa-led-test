@@ -53,7 +53,7 @@ export default function DisplayPanel() {
     ["data"],
     () => fetch(URL).then((res) => res.json()),
     {
-      refetchInterval: 2000,
+      refetchInterval: 1000,
       onSuccess(data) {
         const isOn = compareChannel(data, store);
         setButtonState((prevState) => {

@@ -20,6 +20,8 @@ export default function Home() {
       onSuccess: (data) => {
         updateParam(data);
       },
+      refetchOnWindowFocus: true,
+      refetchOnMount: true,
     }
   );
 
