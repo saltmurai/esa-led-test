@@ -16,7 +16,7 @@ export default function StatusBar({ chanelState }: { chanelState: any }) {
           <div className="flex rounded-md">
             <div
               className={clsx(
-                "btn rounded-none",
+                "btn rounded-none text-xl",
                 !yes && "bg-violet-500 text-white"
               )}
               onClick={yesHandler}
@@ -25,7 +25,7 @@ export default function StatusBar({ chanelState }: { chanelState: any }) {
             </div>
             <div
               className={clsx(
-                "btn rounded-none",
+                "btn rounded-none text-xl",
                 yes && "bg-violet-500 text-white"
               )}
               onClick={yesHandler}
@@ -34,7 +34,7 @@ export default function StatusBar({ chanelState }: { chanelState: any }) {
             </div>
           </div>
           <div className="flex flex-1 ml-3 bg-gray-100">
-            <div className="font-bold">
+            <div className="font-bold text-xl w-24">
               Barcode <br></br>Auto:
             </div>
             <div className="flex justify-end flex-1 bg-white border-2 rounded-md">
@@ -45,7 +45,7 @@ export default function StatusBar({ chanelState }: { chanelState: any }) {
               </div>
               <div
                 className={clsx(
-                  "flex items-center justify-center text-white w-16",
+                  "flex items-center justify-center text-white w-20 text-xl",
                   panelStatus === "Waiting" && "bg-amber-500"
                 )}
               >

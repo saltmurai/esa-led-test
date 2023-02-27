@@ -94,8 +94,8 @@ export default function SetParam() {
             </div>
             <div className="btn btn-error text-white">LOAD</div>
           </div>
-          <div className="flex mt-5 flex-col justify-center items-center text-lg">
-            <Box sx={{ height: 500, width: "80%", fontSize: 18 }}>
+          <div className="flex mt-5 flex-col justify-center items-center">
+            <Box sx={{ height: 500, width: "100%" }}>
               <DataGrid
                 rows={rows}
                 columns={columns}
@@ -103,6 +103,7 @@ export default function SetParam() {
                 disableColumnFilter
                 rowsPerPageOptions={[5]}
                 disableSelectionOnClick
+                style={{ fontSize: "1.4rem" }}
                 components={{ Toolbar: GridToolbar }}
                 onCellEditCommit={(params, event) => {
                   const { id, field, value } = params;

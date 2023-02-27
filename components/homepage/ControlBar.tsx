@@ -8,7 +8,7 @@ import { HiSwitchHorizontal } from "react-icons/hi";
 import { CgArrowsHAlt } from "react-icons/cg";
 import { RiShutDownLine } from "react-icons/ri";
 import Link from "next/link";
-const ICON_SIZE = 20;
+const ICON_SIZE = 24;
 
 export default function ControlBar() {
   const [on, setOn] = useState(false);
@@ -31,7 +31,7 @@ export default function ControlBar() {
       name: "System Set",
       icon: <AiFillSetting size={ICON_SIZE} />,
       handler: () => {},
-      href: "system_set",
+      href: "",
     },
     {
       name: "Param Set",
@@ -43,20 +43,20 @@ export default function ControlBar() {
       name: "Param Load",
       icon: <MdSimCardDownload size={ICON_SIZE} />,
       handler: () => {},
-      href: "param_load",
+      href: "",
     },
     {
       name: "History",
       icon: <GrHistory size={ICON_SIZE} />,
       handler: () => {},
-      href: "history",
+      href: "",
     },
   ];
   return (
     <>
       <div
         className={clsx(
-          "flex justify-around bg-white h-24 items-center rounded-md"
+          "flex justify-around bg-white h-32 items-center rounded-md"
         )}
       >
         <div className="flex justify-center items-center">
@@ -71,11 +71,14 @@ export default function ControlBar() {
         </div>
         <div className="flex h-full">
           {/* Menu */}
-          <div className="flex bg-white gap-2 px-2 items-center">
+          <div className="flex bg-white gap-1 mx-1 items-center">
             {menu.map((item, index) => {
               return (
                 <Link href={item.href} key={index}>
-                  <div key={index} className="btn flex flex-col h-16">
+                  <div
+                    key={index}
+                    className="btn flex flex-row h-24 text-lg w-32"
+                  >
                     {item.icon}
                     <div className="">{item.name}</div>
                   </div>
@@ -84,10 +87,10 @@ export default function ControlBar() {
             })}
           </div>
           {/* Control */}
-          <div className="flex gap-4 px-2 items-center">
+          <div className="flex gap-2 px-2 items-center">
             <div
               className={clsx(
-                "btn text-white w-16 bg-red-500 h-16",
+                "btn text-white w-20 bg-red-500 h-20",
                 on && "bg-green-500"
               )}
               onClick={onOffHandler}
@@ -96,22 +99,22 @@ export default function ControlBar() {
             </div>
             <div
               className={clsx(
-                "btn text-white w-16 h-16 bg-orange-400",
+                "btn text-white w-20 h-20 bg-orange-400",
                 clsx(at && "bg-blue-400")
               )}
               onClick={modeHandler}
             >
               {at ? "AT" : "MT"}
             </div>
-            <div className={clsx("btn bg-yellow-400 w-16 h-16 text-white")}>
+            <div className={clsx("btn bg-yellow-400 h-20 w-20 text-white")}>
               Retest
             </div>
-            <div className={clsx("btn bg-black text-white h-16 w-16")}>RST</div>
+            <div className={clsx("btn bg-black text-white h-20 w-20")}>RST</div>
           </div>
           {/* Switch */}
           <div className="px-2 flex items-center">
             <div
-              className="btn bg-green-500 w-16 h-16 text-white"
+              className="btn bg-green-500 w-20 h-20	 text-white"
               onClick={oneWayHandler}
             >
               {oneWay ? (
@@ -126,11 +129,11 @@ export default function ControlBar() {
         <div className="flex bg-white justify-between items-center">
           <div className="flex flex-col mt-4">
             <progress
-              className="progress w-40 h-4 progress-success"
+              className="progress w-40 h-6 progress-success"
               value="70"
               max="100"
             ></progress>
-            <label>Progress: 70%</label>
+            <label className="text-xl">Progress: 70%</label>
           </div>
           <div className="btn ml-2 h-16 w-16">
             <RiShutDownLine size={ICON_SIZE} />
